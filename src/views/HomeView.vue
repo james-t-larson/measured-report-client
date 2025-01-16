@@ -4,10 +4,9 @@
       <h1 class="text-2xl font-bold mb-4">Articles</h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <ArticleCard
-          v-for="article in filteredArticles"
+          v-for="article in articles"
           :key="article.id"
           :article="article"
-          @view-article="viewArticle"
         />
       </div>
     </div>
