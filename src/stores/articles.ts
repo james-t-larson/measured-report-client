@@ -32,16 +32,16 @@ const articles: Article[] = [
 
 export const useArticleStore = defineStore('articleStore', {
   state: () => ({
-    selectedArticle: null,
+    article: null,
     articles: articles,
   }),
   actions: {
-    clearSelectedArticle() {
+    clearArticle() {
       this.selectedArticle = null;
     },
-    setSelectedArticle(id) {
-      article = articles.find((article) => article.id === id)
-        this.selectedArticle;
+    setArticle(id: number) {
+      article = this.articles.find((article) => article.id === id) || 1
+      this.article = article;
     },
   },
 });

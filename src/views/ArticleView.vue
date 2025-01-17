@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useArticleStore } from '../stores/articles';
+const store = useArticleStore();
+const { article } = storeToRefs(store)
+</script>
+
 <template>
   <div class="p-8">
     <h1 class="text-3xl font-bold mb-4">{{ article?.title }}</h1>
@@ -8,18 +15,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useArticleStore } from '../stores/articles';
-
 export default defineComponent({
   setup() {
-    const article = articleStore.selectedArticle
-
     const goBack = () => {
       window.history.back();
     };
 
     return {
-      article,
       goBack,
     };
   },
