@@ -8,12 +8,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { articles } from '../data/articles';
+import { useArticleStore } from '../stores/articles';
 
 export default defineComponent({
   setup() {
-    const articleId = parseInt(window.location.pathname.split('/').pop() || '0', 10); - 1
-    const article = articles[articleId]
+    const article = articleStore.selectedArticle
 
     const goBack = () => {
       window.history.back();

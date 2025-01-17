@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useArticleStore } from '../stores/articles';
+const store = useArticleStore();
+const { articles } = storeToRefs(store)
+</script>
+
 <template>
   <div class="flex">
     <div class="flex-1 p-4">
@@ -15,7 +22,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { articles } from '../data/articles';
 import ArticleCard from '../components/ArticleCard.vue';
 
 export default defineComponent({
