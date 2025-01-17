@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 bg-white shadow-md rounded hover:shadow-lg cursor-pointer">
-    <h3 class="font-bold text-xl mb-2">{{ article.title }}</h3>
+    <router-link :to="`/article/${article.id}`" class="font-bold text-xl mb-2">{{ article.title }}</router-link>
     <p class="text-gray-600 text-sm">{{ article.content.substring(0, 100) }}...</p>
     <span class="text-blue-500 text-xs">{{ article.category }}</span>
   </div>

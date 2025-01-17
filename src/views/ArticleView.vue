@@ -13,7 +13,7 @@ import { articles } from '../data/articles';
 export default defineComponent({
   setup() {
     const articleId = parseInt(window.location.pathname.split('/').pop() || '0', 10);
-    const article = articles.find((a) => a.id === articleId);
+    const article = articles[articleId]
 
     const goBack = () => {
       window.history.back();
