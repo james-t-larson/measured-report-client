@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
+import { computed } from 'vue';
 import { useArticleStore } from '../stores/articles';
 const store = useArticleStore();
-const { article } = storeToRefs(store)
+const article = computed(() => store.article);
 </script>
 
 <template>
   <div class="p-8">
-    <h1 class="text-3xl font-bold mb-4">{{ article?.title }}</h1>
-    <p class="text-gray-700">{{ article?.content }}</p>
+    <h1 class="text-2xl font-bold mb-4">{{ article?.title }}</h1>
+    <p>{{ article?.content }}</p>
     <button class="mt-4 text-blue-500" @click="goBack">Back</button>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default defineComponent({
     };
 
     return {
+      article,
       goBack,
     };
   },

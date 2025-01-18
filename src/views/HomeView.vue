@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
+import { onMounted, computed } from 'vue';
 import { useArticleStore } from '../stores/articles';
+
 const store = useArticleStore();
-const { articles } = storeToRefs(store)
+const articles = computed(() => store.articles);
+
+onMounted(() => {
+  store.fetchArticles()
+})
 </script>
 
 <template>
   <div class="flex">
     <div class="flex-1 p-4">
-      <h1 class="text-2xl font-bold mb-4">Latest Stories</h1>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h1 class="text-2xl font-bold mb-4 pl-4">Latest Stories</h1>
+      <div class="grid grid-cols-[1fr_2fr_1fr] sm:grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] gap-4">
         <ArticleCard
           v-for="article in articles"
           :key="article.id"
