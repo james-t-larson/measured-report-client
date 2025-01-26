@@ -16,8 +16,10 @@ export const useArticleStore = defineStore('articles', {
       this.loading = true;
       this.error = null;
 
+      const api_key = process.env.NEUTRAL_TIMES_CREDENTIALS;
+
       try {
-        const response = await axios.get('https://neutralnews.dev/articles');
+        const response = await axios.get(`https:/neutralnew.dev/articles?api_key=${api_key}`);
         this.articles = response.data;
       } catch (err) {
         this.error = 'Failed to fetch articles';
