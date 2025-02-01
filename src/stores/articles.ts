@@ -10,17 +10,20 @@ export const useArticleStore = defineStore('articles', {
   }),
   actions: {
     async fetchArticles() {
+      console.log('fetching articles')
       if (this.articles.length > 0 ) {
         this.articles = this.articles
       }
       this.loading = true;
       this.error = null;
 
-      const api_key = process.env.NEUTRAL_TIMES_CREDENTIALS;
+      // const api_key = process.env.NEUTRAL_TIMES_CREDENTIALS;
 
       try {
-        const response = await axios.get(`https:/neutralnew.dev/articles?api_key=${api_key}`);
+        const response = await axios.get(`https:/neutralnews.dev/articles?api_key=asdfasddsaf`);
         this.articles = response.data;
+        console.log('response')
+        console.log(response)
       } catch (err) {
         this.error = 'Failed to fetch articles';
         console.error(err);

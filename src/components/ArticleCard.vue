@@ -1,28 +1,30 @@
 <script setup lang="ts">
-import { useArticleStore } from '../stores/articles';
-const store = useArticleStore();
+import { useArticleStore } from '../stores/articles'
+const store = useArticleStore()
 const { setArticle } = store
+defineProps({
+  article: Object,
+  hideImage: Boolean,
+})
 </script>
 
 <template>
   <div class="p-4">
-    <router-link
-      :to="`/article/${article.id}`"
-      @click="`${setArticle(article.id)}`"
-      class="font-bold prose btn-ghost text-xl mb-2"
-    >
-    {{ article.title }}
-    <p class="text-sm">{{ article.content.substring(0, 100) }}...</p>
-    <span class="text-xs">{{ article.category }}</span>
+    <img v-if="article.image && !hideImage" :src="article.image" alt="Article Image" class="w-full pb-4" />
+    <router-link :to="`/article/${article.id}`" @click="`${setArticle(article.id)}`"
+      class="article-card-title prose btn-ghost mb-2">
+      {{ article.title }}
     </router-link>
-    <span class="divider m-0"></span>
+    <p class="text-m article-summary mt-3">{{ article.summary }}...</p>
+    <span class="text-xs">{{ article.category }}</span>
+    <span class="divider mt-3"></span>
   </div>
 </template>
 
 <script lang="ts">
-import { useArticleStore } from '../stores/articles';
-import { defineComponent } from 'vue';
-import { Article } from '../data/articles';
+import { useArticleStore } from '../stores/articles'
+import { defineComponent } from 'vue'
+import { Article } from '../data/articles'
 
 export default defineComponent({
   props: {
@@ -31,5 +33,5 @@ export default defineComponent({
       required: true,
     },
   },
-});
+})
 </script>

@@ -1,41 +1,49 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue';
-import { useArticleStore } from '../stores/articles';
+import { onMounted, computed } from 'vue'
+import { useArticleStore } from '../stores/articles'
 
-const store = useArticleStore();
-const articles = computed(() => store.articles);
+const store = useArticleStore()
+const articles = computed(() => store.articles)
 
 onMounted(() => {
+  console.log('mounted')
   store.fetchArticles()
 })
 </script>
 
 <template>
-  <div class="flex">
-    <div class="flex-1 p-4">
-      <h1 class="text-2xl font-bold mb-4 pl-4">Latest Stories</h1>
-      <div class="grid grid-cols-[1fr_2fr_1fr] sm:grid-cols-2 lg:grid-cols-[1fr_2fr_1fr] gap-4">
-        <ArticleCard
-          v-for="article in articles"
-          :key="article.id"
-          :article="article"
-        />
+  <div class="flex w-full">
+    <div class="pl-4 pr-2 pt-0">
+      <span class="category-title pl-4">Relevant</span>
+      <span class="category-title pl-4">Relevant</span>
+      <span class="category-title pl-4">Relevant</span>
+      <span class="category-title pl-4">Relevant</span>
+      <span class="category-title pl-4">Relevant</span>
+      <span class="divider mt-0 pl-4"></span>
+      <div class="flex flex-col md:flex-row">
+        <div class="basis-2/6 flex flex-col">
+          <ArticleCard v-for="(article, index) in articles.filter((_, i) => i % 2 === 0)" :key="article.id"
+            :article="article" :hideImage="true" />
+        </div>
+        <div class="basis-4/6 flex flex-col">
+          <ArticleCard v-for="(article, index) in articles.filter((_, i) => i % 2 !== 0)" :key="article.id"
+            :article="article" :hideImage="false" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import ArticleCard from '../components/ArticleCard.vue';
+import { defineComponent, ref } from 'vue'
+import ArticleCard from '../components/ArticleCard.vue'
 
 export default defineComponent({
   components: { ArticleCard },
   setup() {
-
     return {
       articles,
-    };
+    }
   },
-});
+})
 </script>
