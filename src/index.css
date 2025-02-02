@@ -10,6 +10,16 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+.category-title.selected {
+  font-weight: 600;
+}
+
+.empty-content-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
 .article-card-title {
   font-family: 'Georgia Pro Cond', sans-serif;
   font-weight: 400;

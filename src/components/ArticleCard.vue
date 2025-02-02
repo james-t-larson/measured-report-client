@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { useArticleStore } from '../stores/articles'
-const store = useArticleStore()
+import { useAppStore } from '../stores/app'
+import { Article } from '../data/articles'
+
+const store = useAppStore()
 const { setArticle } = store
 defineProps({
-  article: Object,
+  article: Object as () => Article,
   hideImage: Boolean,
 })
 </script>
@@ -20,18 +22,3 @@ defineProps({
     <span class="divider mt-3"></span>
   </div>
 </template>
-
-<script lang="ts">
-import { useArticleStore } from '../stores/articles'
-import { defineComponent } from 'vue'
-import { Article } from '../data/articles'
-
-export default defineComponent({
-  props: {
-    article: {
-      type: Object as () => Article,
-      required: true,
-    },
-  },
-})
-</script>
