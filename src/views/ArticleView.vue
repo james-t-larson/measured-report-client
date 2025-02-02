@@ -1,12 +1,23 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import { useAppStore } from '../stores/app'
+const route = useRoute()
 const store = useAppStore()
+const { fetchArticle } = store
 const article = computed(() => store.article)
+const articleSet = Object.keys(article?.value || {}).length > 0
+
+onMounted(async () => {
+  if (!articleSet) {
+    const id = route.params.id as string
+    await fetchArticle(Number(id))
+  }
+})
 </script>
 
 <template>
-  <div class="flex justify-center w-100">
+  <div v-if="article !== null" class="flex justify-center w-100">
     <div class="p-8 md:max-w-[70%]">
       <div>
         <h1 class="text-2xl mb-4 article-title">{{ article?.title }}</h1>

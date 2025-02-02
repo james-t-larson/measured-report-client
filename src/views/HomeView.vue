@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, computed, watch, ref } from 'vue'
+import type { Category } from '../data/category'
 import { useAppStore } from '../stores/app'
 import CategoriesBar from '../components/CategoriesBar.vue'
 import ArticlesPanel from '../components/ArticlesPanel.vue'
@@ -15,9 +16,9 @@ onMounted(async () => {
   isFirstLoad.value = false
 })
 
-watch(
+watch<Category | null>(
   activeCategory,
-  async (newCategory) => {
+  async (newCategory: Category | null) => {
     if (newCategory?.id && !isFirstLoad.value) {
       await fetchCategoryArticles(newCategory)
     }
