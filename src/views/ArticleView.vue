@@ -17,8 +17,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="article !== null" class="flex justify-center w-100">
-    <div class="p-8 md:max-w-[70%]">
+  <div v-if="article !== null" class="w-100">
+    <div class="p-8 md:max-w-[70%] mx-auto">
       <div>
         <h1 class="text-2xl mb-4 article-title">{{ article?.title }}</h1>
         <p class="article-content">{{ article?.content }}</p>

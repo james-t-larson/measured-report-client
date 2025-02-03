@@ -11,11 +11,12 @@
 
 ## Doing
 
-- Need unified method for calling the api
-    > It should not be done in the stores
+- Put domains into configs
 
 ## Done
 
 - Fix center article height and size
     > At the moment, they are smaller than the side articles. This looks strangeq
 - Get categories implmented
+- Need unified method for calling the api
+    > It should not be done in the stores

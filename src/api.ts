@@ -23,9 +23,7 @@ api.fetchCategories = async (): Promise<Category[]> => {
 }
 
 api.fetchCategoryArticles = async (category: Category): Promise<Article[]> => {
-  const response = await api.get<ApiResponse<Article[]>>(
-    `v2/categories/${category.id}/articles`
-  )
+  const response = await api.get<ApiResponse<Article[]>>(`v2/categories/${category.id}/articles`)
   return response.data.data
 }
 

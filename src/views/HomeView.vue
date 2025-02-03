@@ -4,6 +4,7 @@ import type { Category } from '../data/category'
 import { useAppStore } from '../stores/app'
 import CategoriesBar from '../components/CategoriesBar.vue'
 import ArticlesPanel from '../components/ArticlesPanel.vue'
+import MobileWarningPanel from '../components/MobileWarningPanel.vue'
 
 const store = useAppStore()
 const { fetchInitialState, fetchCategoryArticles, initialized } = store
@@ -12,8 +13,10 @@ const activeCategory = computed(() => store.category)
 const isFirstLoad = ref(true)
 
 onMounted(async () => {
-  await fetchInitialState()
-  isFirstLoad.value = false
+  if (isFirstLoad) {
+    await fetchInitialState()
+    isFirstLoad.value = false
+  }
 })
 
 watch<Category | null>(
