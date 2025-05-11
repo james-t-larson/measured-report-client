@@ -4,6 +4,7 @@ import type { Category } from '../data/category'
 import { useAppStore } from '../stores/app'
 import CategoriesBar from '../components/CategoriesBar.vue'
 import ArticlesPanel from '../components/ArticlesPanel.vue'
+import InformationModal from '../components/InformationModal.vue'
 import MobileWarningPanel from '../components/MobileWarningPanel.vue'
 
 const store = useAppStore()

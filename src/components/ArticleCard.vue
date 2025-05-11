@@ -3,6 +3,15 @@ import { defineProps } from 'vue'
 import { useAppStore } from '../stores/app'
 import type { Article } from '../data/article'
 
+const formattedDate = (date?: string) => {
+  if (!date) return ''
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  }).format(new Date(date))
+}
+
 const store = useAppStore()
 const { setArticle } = store
 const { article, hideImage } = defineProps<{
@@ -19,6 +28,9 @@ const { article, hideImage } = defineProps<{
       {{ article?.title }}
     </router-link>
     <p class="text-m article-summary mt-3">{{ article?.summary }}...</p>
+    <p class="article-created mt-3">
+      Published: {{ formattedDate(article?.created_at) }}
+    </p>
     <span class="divider mt-3"></span>
   </div>
 </template>
