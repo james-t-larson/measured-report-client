@@ -10,7 +10,7 @@ const activeCategory = computed(() => store.category)
 </script>
 
 <template>
-  <div class="flex flex-row pl-4 gap-3">
+  <div class="hidden md:block flex flex-row pl-4 gap-3">
     <template v-for="category in categories" :key="category.id">
       <router-link :to="`/category/${category.id}`" @click="setCategory(category)"
         class="category-title prose btn-ghost px-2" :class="{ selected: category.id === activeCategory.id }">
@@ -18,5 +18,7 @@ const activeCategory = computed(() => store.category)
       </router-link>
     </template>
   </div>
-  <span class="divider mt-0 pl-4"></span>
+  <div class="hidden md:block">
+    <div class="divider mt-0 pl-4"></div>
+  </div>
 </template>

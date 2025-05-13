@@ -6,8 +6,7 @@ import MobileWarningPanel from './components/MobileWarningPanel.vue'
 
 <template>
   <Navbar />
-  <MobileWarningPanel class="md:hidden" />
-  <RouterView class="hidden sm:block" />
+  <RouterView />
 </template>
 
 <style scoped>

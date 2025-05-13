@@ -23,6 +23,10 @@ onMounted(async () => {
         <h1 class="text-2xl mb-4 article-title">{{ article?.title }}</h1>
         <p class="article-content">{{ article?.content }}</p>
       </div>
+      <div class="divider"></div>
+      <p class="text-m article-created">
+        <a :href="article?.sources" target="_blank" rel="noopener noreferrer" class="btn-ghost link">Source Article</a>
+      </p>
     </div>
   </div>
 </template>

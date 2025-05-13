@@ -28,6 +28,7 @@ const { article, hideImage } = defineProps<{
       {{ article?.title }}
     </router-link>
     <p class="text-m article-summary mt-3">{{ article?.summary }}...</p>
+    <div class="divider-neutral"></div>
     <p class="article-created mt-3">
       Published: {{ formattedDate(article?.created_at) }}
     </p>
