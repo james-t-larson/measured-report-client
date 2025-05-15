@@ -1,5 +1,7 @@
 ## Long-Term Goals
 
+- Get PWA working
+- Publish to Android and iOs app stores
 
 ## To Do
 
