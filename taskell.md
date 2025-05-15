@@ -3,14 +3,10 @@
 
 ## To Do
 
-- BUG: When visiting a specific article, refreshing the page removes the article from state.
-    * [ ] Add requeest to store
-    * [ ] If article is not defined request the specific article
+- Implement Login Page
 
 ## Doing
 
-- Switch nav bar to use new typeface
-    > https://www.cdnfonts.com/lt-afficher-neue.font <- this typeface has more font-wights and options. Should be better for smaller screens and the logo
 
 ## Done
 
@@ -22,3 +18,8 @@
 - Put domains into configs
 - When visting a category without articles, show a fallback page
 - Update interfaces to reflect what comes from the api
+- Switch nav bar to use new typeface
+    > https://www.cdnfonts.com/lt-afficher-neue.font <- this typeface has more font-wights and options. Should be better for smaller screens and the logo
+- BUG: When visiting a specific article, refreshing the page removes the article from state.
+    * [ ] Add requeest to store
+    * [ ] If article is not defined request the specific article

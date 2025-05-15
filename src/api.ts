@@ -20,8 +20,8 @@ api.interceptors.request.use((config) => {
 })
 
 api.fetchArticle = async (id: number): Promise<Article> => {
-  const response = await api.get<Article>(`/articles/${id}`)
-  return response.data
+  const response = await api.get<ApiResponse<Article>>(`/articles/${id}`)
+  return response.data.data
 }
 
 api.fetchCategories = async (): Promise<Category[]> => {

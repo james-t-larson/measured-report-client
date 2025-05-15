@@ -65,7 +65,6 @@ export const useAppStore = defineStore('articles', {
 
       try {
         const response = await api.fetchArticle(id)
-        console.log('testing')
         this.article = response
       } catch {
         this.error = 'Failed to fetch categories'
