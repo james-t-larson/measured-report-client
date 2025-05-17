@@ -19,6 +19,8 @@ api.interceptors.request.use((config) => {
   return config
 })
 
+// TODO: Add interceptor that catches errors and sets the error in state
+
 api.fetchArticle = async (id: number): Promise<Article> => {
   const response = await api.get<ApiResponse<Article>>(`/articles/${id}`)
   return response.data.data
@@ -29,8 +31,8 @@ api.fetchCategories = async (): Promise<Category[]> => {
   return response.data.data
 }
 
-api.fetchCategoryArticles = async (category: Category): Promise<Article[]> => {
-  const response = await api.get<ApiResponse<Article[]>>(`/categories/${category.id}/articles`)
+api.fetchCategoryArticles = async (id: number = 1): Promise<Article[]> => {
+  const response = await api.get<ApiResponse<Article[]>>(`/categories/${id}/articles`)
   return response.data.data
 }
 

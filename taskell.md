@@ -6,6 +6,9 @@
 ## To Do
 
 - Implement Login Page
+- Need to display proper errors if articles/categories fail to fetch
+- Move all the error catching logic to api.ts
+- rename all fetch methods to set
 
 ## Doing
 

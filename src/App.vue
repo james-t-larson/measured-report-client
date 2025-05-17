@@ -1,7 +1,35 @@
 <script setup lang="ts">
+import { watch, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { RouterLink, RouterView } from 'vue-router'
+import { useAppStore } from './stores/app.ts'
+
 import Navbar from './components/Navbar.vue'
-import MobileWarningPanel from './components/MobileWarningPanel.vue'
+
+const store = useAppStore()
+const route = useRoute()
+const { fetchInitialState } = store
+
+const isFirstLoad = ref(true)
+
+watch(
+  () => route.params,
+  async () => {
+    if (isFirstLoad.value) {
+      const categoryId = route.params.categoryId || '1'
+      const articleId = route.params.articleId
+
+      const catId = Number(categoryId)
+      const artId: number | undefined =
+        typeof articleId === 'string' ? Number(articleId) : undefined
+
+      await fetchInitialState(catId, artId)
+      isFirstLoad.value = false
+    }
+  },
+  { immediate: true }
+)
+
 </script>
 
 <template>

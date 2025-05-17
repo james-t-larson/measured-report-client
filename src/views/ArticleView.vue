@@ -4,23 +4,15 @@ import { useRoute } from 'vue-router'
 import { useAppStore } from '../stores/app'
 const route = useRoute()
 const store = useAppStore()
-const { fetchArticle } = store
 const article = computed(() => store.article)
-const articleSet = Object.keys(article?.value || {}).length > 0
-
-onMounted(async () => {
-  if (!articleSet) {
-    const id = route.params.id as string
-    await fetchArticle(Number(id))
-  }
-})
 </script>
 
 <template>
   <div v-if="article !== null" class="w-100">
-    <div class="p-8 md:max-w-[70%] mx-auto">
+    <div class="my-10 max-w-[90%] md:max-w-[70%] mx-auto">
       <div>
-        <h1 class="text-2xl mb-4 article-title">{{ article?.title }}</h1>
+        <h1 class="text-2xl article-title">{{ article?.title }}</h1>
+        <div class="divider"></div>
         <p class="article-content">{{ article?.content }}</p>
       </div>
       <div class="divider"></div>

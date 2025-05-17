@@ -23,10 +23,15 @@ function handleCategoryClick(category: any) {
 
   closeDrawer();
 }
+
+defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <div class="divider divider-end w-full">
+  <router-link :to="`/category/${activeCategory.id}`" class="category-title mr-1 px-1 prose btn-ghost" v-bind="$attrs">
+    {{ activeCategory.name }}
+  </router-link>
+  <div class="divider divider-end w-full" v-bind="$attrs">
     <div class="drawer drawer-end w-10">
 
       <input type="checkbox" class="drawer-toggle" :checked="isDrawerOpen" readOnly />

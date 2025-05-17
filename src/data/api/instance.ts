@@ -5,5 +5,5 @@ import type { Category } from '../category'
 export interface ApiInstance extends AxiosInstance {
   fetchArticle: (id: number) => Promise<Article>
   fetchCategories: () => Promise<Category[]>
-  fetchCategoryArticles: (category: Category) => Promise<Article[]>
+  fetchCategoryArticles: (id: number) => Promise<Article[]>
 }

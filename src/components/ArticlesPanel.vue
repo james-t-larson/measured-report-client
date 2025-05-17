@@ -4,7 +4,7 @@ import { useAppStore } from '../stores/app'
 import ArticleCard from '../components/ArticleCard.vue'
 
 const store = useAppStore()
-const articles = computed(() => store.articles)
+const articles = computed(() => store.categoryArticles)
 </script>
 
 <template>
