@@ -1,14 +1,21 @@
 ## Long-Term Goals
 
-- Get PWA working
-- Publish to Android and iOs app stores
-
-## To Do
-
-- Implement Login Page
+- Make header 90% of screen size to match article width on mobile
 - Need to display proper errors if articles/categories fail to fetch
 - Move all the error catching logic to api.ts
 - rename all fetch methods to set
+- Add themes, mimic themes from financial times
+- Need back button when reading an article for mobile screens
+- Make scroll bar invisible on mobile screens
+- Store all category articles in state. Only fetch  category articles when they are not in state
+- Create express server that gets category 1 articles, and stores them in redis.
+
+## To Do
+
+- Fix issue with selecting an artocle and being at the bottom of the page
+- Implement Login Page
+- Get PWA working
+- Publish to Android and iOs app stores
 
 ## Doing
 
