@@ -19,21 +19,34 @@ api.interceptors.request.use((config) => {
   return config
 })
 
-// TODO: Add interceptor that catches errors and sets the error in state
+api.interceptors.response.use(
+  (response) => {
+    return response
+  },
+  (error) => {
+    if (!error.response || error.response.status >= 400) {
+      console.error('API Error:', error)
+    }
+    return Promise.reject(error)
+  }
+)
 
-api.fetchArticle = async (id: number): Promise<Article> => {
-  const response = await api.get<ApiResponse<Article>>(`/articles/${id}`)
-  return response.data.data
+const getAndExtract = async <T>(url: string): Promise<T> => {
+  try {
+    const response = await api.get<ApiResponse<T>>(url)
+    return response.data.data
+  } catch {
+    const name = url.split('/').filter(Boolean).pop()?.replace(/-/g, ' ')
+    const label = name ? name.charAt(0).toUpperCase() + name.slice(1) : 'Resource'
+    throw new Error(`There was a problem getting the ${label}`)
+  }
 }
 
-api.fetchCategories = async (): Promise<Category[]> => {
-  const response = await api.get<ApiResponse<Category[]>>('/categories')
-  return response.data.data
-}
+api.fetchArticle = (id: number) => getAndExtract<Article>(`/articles/${id}`)
 
-api.fetchCategoryArticles = async (id: number = 1): Promise<Article[]> => {
-  const response = await api.get<ApiResponse<Article[]>>(`/categories/${id}/articles`)
-  return response.data.data
-}
+api.fetchCategories = () => getAndExtract<Category[]>('/categories')
+
+api.fetchCategoryArticles = (id: number = 1) =>
+  getAndExtract<Article[]>(`/categories/${id}/articles`)
 
 export default api
