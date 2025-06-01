@@ -4,10 +4,18 @@ import type { ApiInstance } from './data/api/instance'
 import type { Category } from './data/category'
 import type { Article } from './data/article'
 
-const apiKey = import.meta.env.VITE_API_KEY
-const apiBaseURL = import.meta.env.VITE_API_BASE_URL
+// NOTE: As this project expands this will need to move somewhere more sane
+declare global {
+  interface Window {
+    __API_CONFIG__: {
+      API_DOMAIN: string;
+      API_KEY: string;
+    };
+  }
+}
+
 const api = axios.create({
-  baseURL: `${apiBaseURL}/api/v1`,
+  baseURL: `${window.__API_CONFIG__.API_DOMAIN}/api/v1`,
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
@@ -15,7 +23,7 @@ const api = axios.create({
 }) as ApiInstance
 
 api.interceptors.request.use((config) => {
-  config.params = { ...config.params, api_key: apiKey }
+  config.params = { ...config.params, api_key: window.__API_CONFIG__?.API_KEY }
   return config
 })
 
