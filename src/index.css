@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* TODO: Break this up */
+/* Things will get complicated quite quickly if I don't start breaking this up soon */
+
 .navbar {
   font-family: 'Henri Didot', serif;
 }
@@ -58,3 +61,13 @@
   font-size: 0.8rem;
   font-weight: 400;
 }
+
+.sign-in-title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+.form-control {
+  font-family: 'Open Sans', sans-serif;
+}
+

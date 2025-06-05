@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { useUserStore } from '../stores/user.ts'
+import { computed } from 'vue'
+
 import CategoriesDrawer from '../../src/components/CategoriesDrawer.vue'
 import CategoriesBar from '../../src/components/CategoriesBar.vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/solid';
+
+const store = useUserStore()
+const signedIn = computed(() => store.user?.signedIn)
 
 </script>
 
@@ -15,8 +21,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/solid';
       <div class="flex w-full flex-col md:inline hidden">
         <div class="divider"></div>
       </div>
-      <CategoriesDrawer class="md:hidden" />
+      <CategoriesDrawer v-if="signedIn" class="md:hidden" />
     </div>
   </div>
-  <CategoriesBar class="hidden md:flex mx-7 w-auto" />
+  <CategoriesBar v-if="signedIn" class="hidden md:flex mx-7 w-auto" />
 </template>

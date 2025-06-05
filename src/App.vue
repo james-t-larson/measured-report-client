@@ -8,7 +8,7 @@ import Navbar from './components/Navbar.vue'
 
 const store = useAppStore()
 const route = useRoute()
-const { fetchInitialState } = store
+const { initializeState } = store
 
 const isFirstLoad = ref(true)
 
@@ -23,7 +23,7 @@ watch(
       const artId: number | undefined =
         typeof articleId === 'string' ? Number(articleId) : undefined
 
-      await fetchInitialState(catId, artId)
+      await initializeState(catId, artId)
       isFirstLoad.value = false
     }
   },

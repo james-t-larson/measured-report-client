@@ -1,8 +1,13 @@
 #app {
   display: unset;
   max-width: 1280px;
+  min-height: 100%;
   margin: 0 auto;
   font-weight: normal;
+}
+
+body {
+  min-height: 100%;
 }
 
 @media (min-width: 1024px) {

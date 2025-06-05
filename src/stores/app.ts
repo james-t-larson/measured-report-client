@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
-import api from '@/api'
+import api from '../api/service.ts'
 import type { Category } from '../data/category'
 import type { Article } from '../data/article'
-import type { AppState } from '../data/appState'
+import type { AppState } from '../data/state/app'
 
 // TODO: Move error logic to api.ts
-// It doesn't belong here
-// All the fetch functions could just be set functions that get call the fetch functions if state is empty
+// TODO: if the article can be found in state, there should not be an api call
+// TODO: Break into a couple different stores
 
 export const useAppStore = defineStore('app', {
   state: (): AppState => ({
@@ -20,25 +20,26 @@ export const useAppStore = defineStore('app', {
     error: null,
   }),
   actions: {
-    async fetchInitialState(categoryId: number, articleId?: number) {
+    async initializeState(categoryId: number, articleId?: number) {
       if (this.initialized) return;
 
       this.loading = true
 
       try {
-        if (!!articleId) await this.fetchArticle(articleId)
-        await this.fetchCategories(categoryId)
-        await this.fetchCategoryArticles(categoryId)
+        if (!!articleId) await this.setArticle(articleId)
+        await this.setCategories(categoryId)
+        await this.setCategoryArticles(categoryId)
 
         this.initialized = true
       } catch {
         this.error = 'Failed to fetch initial state'
       } finally {
-        this.loading = false
         this.initialized = true
       }
+
+      this.loading = false
     },
-    async fetchCategories(id: number = 1) {
+    async setCategories(id: number = 1) {
       this.loading = true
       this.error = null
 
@@ -49,11 +50,10 @@ export const useAppStore = defineStore('app', {
       } catch {
         this.loading = false
         this.error = 'Failed to fetch categories'
-      } finally {
-        this.loading = false
       }
+      this.loading = false
     },
-    async fetchCategoryArticles(id: number) {
+    async setCategoryArticles(id: number) {
       this.loading = true
       this.error = null
 
@@ -62,11 +62,10 @@ export const useAppStore = defineStore('app', {
         this.categoryArticles = response
       } catch {
         this.error = 'Failed to fetch category articles'
-      } finally {
-        this.loading = false
       }
+      this.loading = false
     },
-    async fetchArticle(id: number) {
+    async setArticle(id: number) {
       this.loading = true
       this.error = null
 
@@ -76,16 +75,12 @@ export const useAppStore = defineStore('app', {
       } catch {
         this.loading = false
         this.error = 'Failed to fetch article'
-      } finally {
-        this.loading = false
       }
+      this.loading = false
     },
     setCategory(category: Category) {
-      this.fetchCategoryArticles(category.id)
+      this.setCategoryArticles(category.id)
       this.category = category
-    },
-    setArticle(article: Article) {
-      this.article = article
     },
   },
 })
