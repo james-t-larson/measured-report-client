@@ -11,4 +11,5 @@ export interface Article {
   eventId: string | null
   location: string
   relevance: number
+  createdAt: string
 }

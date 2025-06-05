@@ -24,13 +24,13 @@ const { article, hideImage } = defineProps<{
   <div class="p-4">
     <img v-if="article?.image && !hideImage" :src="article?.image" alt="Article Image" class="w-full pb-4" />
     <router-link :to="`/category/${article?.categoryId}/article/${article?.id}`"
-      @click="`${setArticle(article?.id ?? ({} as Article))}`" class="article-card-title prose btn-ghost mb-2">
+      @click="`${setArticle(article?.id ?? (0 as number))}`" class="article-card-title prose btn-ghost mb-2">
       {{ article?.title }}
     </router-link>
     <p class="text-m article-summary mt-3">{{ article?.summary }}...</p>
     <div class="divider-neutral"></div>
     <p class="article-created mt-3">
-      Published: {{ formattedDate(article?.created_at) }}
+      Published: {{ formattedDate(article?.createdAt) }}
     </p>
     <span class="divider mt-3"></span>
   </div>
