@@ -15,8 +15,8 @@ const signedIn = computed(() => store.user?.signedIn)
   <div class="navbar mx-5 w-auto">
     <div class="flex-1">
       <router-link :to="'/home'" class="btn btn-ghost prose text-4xl px-1 md:mr-3 md:pl-1 md:text-3xl">
-        <span class="md:inline hidden">The Measured Report</span>
-        <span class="md:hidden py-1">TMR</span>
+        <span class="md:inline hidden">Measured Report</span>
+        <span class="md:hidden py-1">MR</span>
       </router-link>
       <div class="flex w-full flex-col md:inline hidden">
         <div class="divider"></div>
