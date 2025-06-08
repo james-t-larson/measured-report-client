@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 import HomeView from '../views/HomeView.vue'
 import ArticleView from '../views/ArticleView.vue'
-import SignInView from '../views/SignIn.vue'
+import SignInView from '../views/SignInView.vue'
+import StaticContentView from '../views/StaticContentView.vue'
 
 const routes = [
   { path: '/', redirect: '/home' },
@@ -20,6 +21,11 @@ const routes = [
     component: ArticleView,
     meta: { requiresAuth: true },
   },
+  {
+    path: '/static-content/:slug',
+    name: 'static-content',
+    component: StaticContentView,
+  },
 ]
 
 const router = createRouter({
@@ -30,9 +36,17 @@ const router = createRouter({
 router.beforeEach(async (to, _, next) => {
   const store = useUserStore()
   await store.hydrate()
-  let signedIn = store.user?.signedIn
+  let signedIn = store.user?.signedIn;
+  let deviceID = store.user?.deviceID;
+
+  let toStaticView = to.meta.name = 'static-content'
+  let noDeviceID = deviceID === undefined || deviceID === null;
+  if (!signedIn && noDeviceID && !toStaticView) {
+    return next({ path: 'static-content/landing-page' })
+  }
 
   if (to.meta.requiresAuth && !signedIn) {
+    console.log('testing in signIn block')
     return next({ name: 'signIn' })
   }
   if (to.name === 'signIn' && signedIn) {

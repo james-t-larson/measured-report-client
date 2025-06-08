@@ -5,6 +5,11 @@
 /* TODO: Break this up */
 /* Things will get complicated quite quickly if I don't start breaking this up soon */
 
+.static-view {
+  display: flex;
+  justify-content: center;
+}
+
 .navbar {
   font-family: 'Henri Didot', serif;
 }
@@ -31,11 +36,23 @@
   font-size: 1.7rem;
 }
 
+.static-view h1,
+.static-view h2,
 .article-title {
   font-family: 'Georgia Pro Cond', sans-serif;
   font-size: 2.0rem;
   line-height: 1.1;
   text-align: center;
+}
+
+.static-view h1,
+.static-view h2 {
+  font-family: 'Henri Didot', serif;
+  text-align: left;
+}
+
+.static-view h2 {
+  font-size: 1.8rem;
 }
 
 @media (min-width: 768px) {
@@ -44,6 +61,7 @@
   }
 }
 
+.static-view p,
 .article-content {
   font-family: 'Georgia Pro Light', sans-serif;
   font-size: 1.1rem;
