@@ -7,6 +7,7 @@ import type { User } from '@/data/user.ts'
 const initialState = {
   id: null,
   email: null,
+  deviceID: null,
   signedIn: false,
 }
 

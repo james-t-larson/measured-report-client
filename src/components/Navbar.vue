@@ -7,14 +7,25 @@ import CategoriesBar from '../../src/components/CategoriesBar.vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/solid';
 
 const store = useUserStore()
-const signedIn = computed(() => store.user?.signedIn)
+const { signedIn, deviceID } = computed(() => store.user)
+
+const root = computed(() =>
+  !deviceID
+    ? '/static-content/landing-page'
+    : '/home'
+)
+
+function onLogoClick() {
+  console.log('navigating to', root.value)
+}
 
 </script>
 
 <template>
   <div class="navbar mx-5 w-auto">
     <div class="flex-1">
-      <router-link :to="'/home'" class="btn btn-ghost prose text-4xl px-1 md:mr-3 md:pl-1 md:text-3xl">
+      <router-link :to="root" @click="onLogoClick"
+        class="btn btn-ghost prose text-4xl px-1 md:mr-3 md:pl-1 md:text-3xl">
         <span class="md:inline hidden">Measured Report</span>
         <span class="md:hidden py-1">MR</span>
       </router-link>

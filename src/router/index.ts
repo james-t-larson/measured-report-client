@@ -39,14 +39,15 @@ router.beforeEach(async (to, _, next) => {
   let signedIn = store.user?.signedIn;
   let deviceID = store.user?.deviceID;
 
-  let toStaticView = to.meta.name = 'static-content'
-  let noDeviceID = deviceID === undefined || deviceID === null;
-  if (!signedIn && noDeviceID && !toStaticView) {
-    return next({ path: 'static-content/landing-page' })
+  const toStaticView = to.name === 'static-content'
+  if (!signedIn && !deviceID && !toStaticView) {
+    return next({
+      name: 'static-content',
+      params: { slug: 'landing-page' }
+    })
   }
 
   if (to.meta.requiresAuth && !signedIn) {
-    console.log('testing in signIn block')
     return next({ name: 'signIn' })
   }
   if (to.name === 'signIn' && signedIn) {

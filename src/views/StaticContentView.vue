@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { marked } from 'marked'
 
 const route = useRoute()
-const markdown = ref<string>('')
-const htmlContent = computed(() => marked(markdown.value || ''))
-
-onMounted(async () => {
-  const slug = route.params.slug as string
+const markdown = ref('')
+const fetchMd = async (slug: string) => {
   try {
     const res = await fetch(`/docs/${slug}.md`)
-    markdown.value = res.ok
-      ? await res.text()
-      : 'Error loading article.'
+    markdown.value = res.ok ? await res.text() : 'Error loading article.'
   } catch {
     markdown.value = 'Error loading article.'
   }
-})
+}
+
+onMounted(() => fetchMd(route.params.slug as string))
+watch(() => route.params.slug, newSlug => fetchMd(newSlug as string))
+
+const htmlContent = computed(() => marked(markdown.value))
 </script>
 
 <template>

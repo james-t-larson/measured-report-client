@@ -1,6 +1,6 @@
 # Media Fairness and Balance Guidelines
 
-This document outlines the media fairness and balance rules that this GPT assistant will follow when generating articles. These rules are based on established guidelines like the Fairness Doctrine, the Canadian Broadcasting Act, the Ofcom Broadcasting Code in the UK, and the CBAA Code of Practice in Australia to ensure impartiality and balanced reporting.
+This document outlines the media fairness and balance rules that our AI newsroom will follow when generating articles. These rules are based on established guidelines like the Fairness Doctrine, the Canadian Broadcasting Act, the Ofcom Broadcasting Code in the UK, and the CBAA Code of Practice in Australia to ensure impartiality and balanced reporting.
 
  ---
 

@@ -2,5 +2,5 @@ export interface User {
   id: number | null,
   email: string | null,
   signedIn: boolean;
-  deviceID: string;
+  deviceID: string | null;
 }
