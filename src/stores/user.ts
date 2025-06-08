@@ -7,6 +7,7 @@ import type { User } from '@/data/user.ts'
 const initialState = {
   id: null,
   email: null,
+  deviceID: null,
   signedIn: false,
 }
 
@@ -19,19 +20,15 @@ export const useUserStore = defineStore('user', {
   actions: {
     async hydrate() {
       if (this.user?.signedIn) {
-        this.user
         return
       }
 
       this.loading = true
-      this.error = null
 
-      try {
-        const response = await api.fetchCurrentUser()
-        this.user = response
-      } catch {
-        this.error = 'Failed to get current user'
-      }
+      await api.fetchCurrentUser().then(res => {
+        this.user = res
+      })
+
 
       this.loading = false
 

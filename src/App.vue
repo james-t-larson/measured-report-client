@@ -10,7 +10,7 @@ const store = useAppStore()
 const route = useRoute()
 const { initializeState } = store
 
-const isFirstLoad = ref(true)
+const isFirstLoad = ref(false)
 
 watch(
   () => route.params,
