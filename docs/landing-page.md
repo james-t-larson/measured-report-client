@@ -2,11 +2,37 @@
 
 ***Informed dialog fuels democracy; echo chambers weaken it.***
 
-As media narratives have become more polarizing people have disengaged from meaningful dialog, our AI-driven newsroom brings daily news that informs, never inflames. Guided by fairness first editorial standards and globally recognized media guidelines, we **aim** to deliver balance, transparency, and all perspectives.  No outrage. Zero spin. Just the facts.
+As media narratives have become more polarizing people have disengaged from civil discussion, our AI-driven newsroom brings daily news that informs, never inflames. Guided by fairness first editorial standards and globally recognized media guidelines, we **aim** to deliver balance, transparency, and all perspectives.  No outrage. Zero spin. Just the facts.
 
 **[Request an Invite](mailto:james@measured.email?subject=Request%20Invite&body=Can%20you%20send%20me%20an%20invite%2C%20I%20would%20really%20like%20to%20try%20it%20out%3F)**
 
 *Be part of the movement where understanding fosters real dialog.*
+
+---
+
+## Sneak Peek
+
+***We’re starting small, and transparent.***
+
+Below is an early demonstration of how our AI reduces emotional tone in articles to focus purely on the facts.
+
+Our goal? A quieter news experience grounded in balance, not buzz.
+
+### Article Comparisons
+
+| Category     | Article Link                                                    | Original Sentiment     | Final Sentiment          |
+| ------------ | --------------------------------------------------------------- | ---------------------- | --------------------------- | 
+| **World**    | [View Article](/category/2/article/1435) | 26.7 *(Quite high)*    | **0.32** *(Nearly perfect)* |
+| **Politics** | [View Article](/category/1/article/1333) | 27.0 *(Quite high)*    | **2.0** *(Very low)*        | 
+| **Tech**     | [View Article](/category/2/article/3350) | 198 *(Ludicrous Speed)* | **7.1** *(Huge reduction)*  |
+
+*Why the variation?*
+
+We calibrate our sentiment targets based on **category norms**. Tech can support more enthusiasm; world and politics need more neutrality.
+
+*Next steps?*
+
+We’re building tools to go further—fact-checking, bias detection, and social score.
 
 --- 
 

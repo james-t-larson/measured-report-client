@@ -5,13 +5,13 @@
 /* TODO: Break this up */
 /* Things will get complicated quite quickly if I don't start breaking this up soon */
 
-.static-view {
+.landing-page {
   display: flex;
   justify-content: center;
 }
 
 .navbar {
-  font-family: 'Henri Didot', serif;
+  font-family: "DM Serif Text", serif;
 }
 
 .category-title {
@@ -36,8 +36,8 @@
   font-size: 1.7rem;
 }
 
-.static-view h1,
-.static-view h2,
+.landing-page h1,
+.landing-page h3,
 .article-title {
   font-family: 'Georgia Pro Cond', sans-serif;
   font-size: 2.0rem;
@@ -45,14 +45,20 @@
   text-align: center;
 }
 
-.static-view h1,
-.static-view h2 {
-  font-family: 'Henri Didot', serif;
+.landing-page h1,
+.landing-page h2,
+.landing-page h3 {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
   text-align: left;
 }
 
-.static-view h2 {
+.landing-page h2 {
   font-size: 1.8rem;
+}
+
+.landing-page h3 {
+  font-size: 1.3rem;
 }
 
 @media (min-width: 768px) {
@@ -61,7 +67,7 @@
   }
 }
 
-.static-view p,
+.landing-page p,
 .article-content {
   font-family: 'Georgia Pro Light', sans-serif;
   font-size: 1.1rem;
